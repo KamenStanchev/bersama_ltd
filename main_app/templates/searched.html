@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block page_content %}
+
+
+
+
+  <div class="url-tree">
+    <a href="{% url 'home' %}">Начало</a> /
+    <a href="{% url 'categories-list' %}">Категории</a> /
+{#    <a href="{% url 'products-list' category.id %}">{{ category.name }}</a>#}
+  </div>
+  <div class="template-holder">
+{% if searched %}
+    <h1 class="messages">You Searched For {{ searched }}</h1>
+  {% if products %}
+    <div class="products-container">
+      {% for product in products %}
+        <div class="product">
+          <img src="{{ product.product_img.url }}" alt="No image">
+          <div class="product-info-bar">
+            <p>{{ product.name }}</p>
+          </div>
+          <div class="product-info-bar description">
+            <p>{{ product.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="paginator">
+      {% if products.has_previous %}
+        <a href="?page=1">&#10096;&#10096;</a>
+        <a href="?page={{ products.previous_page_number }}">&#10096;</a>
+      {% endif %}
+      <span>Page {{ products.number }} of {{ products.paginator.num_pages }}</span>
+      {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}">&#10097;</a>
+        <a href="?page={{ products.paginator.num_pages }}">&#10097;&#10097;</a>
+      {% endif %}
+
+    </div>
+  {% else %}
+    <h1 class="messages">No Finded Items.</h1>
+  {% endif %}
+  </div>
+  {% else %}
+    <h1 class="messages">Hey! You Forgot To Search ....</h1>
+
+  {% endif %}
+{% endblock %}

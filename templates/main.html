@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'style/main.css' %}">
+  <link rel="stylesheet" href="{% static 'style/contact_us.css' %}">
+  <link rel="stylesheet" href="{% static 'style/products_list.css' %}">
+  <link rel="stylesheet" href="{% static 'style/searched.css' %}">
+</head>
+
+<body>
+<nav>
+  <div class="nav-bar-info">
+    <div id="hamburger-menu">
+      <div class="hamburger-lines"></div>
+      <div class="hamburger-lines"></div>
+      <div class="hamburger-lines"></div>
+    </div>
+    <div id="dropdown-menu">
+      <div class="nav-links close-btn">х</div>
+      <a class="nav-links" href="#">ЗА НАС</a>
+      <a class="nav-links" href="{% url 'categories-list' %}">КАТЕГОРИИ</a>
+      <a class="nav-links" href="#">ПРОИЗВОДИТЕЛИ</a>
+      <a class="nav-links" href="#">ПРОМОЦИИ</a>
+      <a class="nav-links" href="{% url 'contact-us' %}">КОНТАКТИ</a>
+    </div>
+
+    <div class="company-logo">BERSAMA Ltd.</div>
+    <form id="search-form" method="POST" action="{% url 'search' %}">
+      {% csrf_token %}
+
+      <input id="search-input" type="search" placeholder="Search..." aria-label="Search" name="searched">
+      <button type="submit" >
+        <img src="{% static 'icons/search.png' %}" alt="no image">
+      </button>
+    </form>
+    <div class="company-links">
+      <div>
+        <a href="#">телефон</a>
+      </div>
+      <div>
+        <a href="#">магазини</a>
+      </div>
+      <div>
+        <a href="#">екип</a>
+      </div>
+      <div>
+        <a href="#">кариери</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <a class="nav-links" href="#">ЗА НАС</a>
+    <a class="nav-links" href="{% url 'categories-list' %}">КАТЕГОРИИ</a>
+    <a class="nav-links" href="#">ПРОИЗВОДИТЕЛИ</a>
+    <a class="nav-links" href="#">ПРОМОЦИИ</a>
+    <a class="nav-links" href="{% url 'contact-us' %}">КОНТАКТИ</a>
+  </div>
+</nav>
+
+{% block page_content %}
+
+{% endblock %}
+
+
+<script src="{% static 'js/main.js' %}">
+</script>
+</body>
+
+</html>
