@@ -23,17 +23,28 @@ def categories_list(request):
     return render(request, 'categories_list.html', context)
 
 
-def products_list(request, category_id):
-    p = Paginator(Product.objects.filter(category_id=category_id).order_by('id'), 1)
+def products_list(request, category_name):
+    p = Paginator(Product.objects.filter(category__name=category_name).order_by('id'), 1)
     page = request.GET.get('page')
     products = p.get_page(page)
 
     context = {
         'products': products,
         'range': range(9),
-        'category': Category.objects.get(id=category_id),
+        'category': Category.objects.get(name=category_name),
     }
     return render(request, 'product_list.html', context)
+
+
+def product_view(request, category_name, product_name):
+    product = Product.objects.get(name = product_name)
+    category = Category.objects.get(name = category_name)
+
+    return render(request, 'product_view.html', 
+                  context={
+        'category': category,
+        'product': product,
+                  })
 
 
 def search(request):

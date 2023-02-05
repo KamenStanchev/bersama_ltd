@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block page_content %}
+<div class="url-tree">
+    <a href="{% url 'home' %}">Начало</a> /
+    <a href="{% url 'categories-list' %}">Категории</a> /
+    <a href="{% url 'products-list' category.name %}">{{ category.name }}</a>/
+    <a href="{% url 'product-view' category.name product.name %}">{{ product.name }}</a>
+</div>
+
+
+<div class="template-holder">
+    <div class="product-container">
+        <img src='{{product.product_img.url}}'>
+        <div>
+            <h2>{{ product.name }}</h2>
+            {% if product.manufacturer %}
+                <h3>{{product.manufacturer}}</h3>
+            {% endif %}
+            {% if product.model %}
+                <h3>{{product.model}}</h3>
+            {% endif %} 
+            {% if product.description %}
+                <h3>{{product.description}}</h3>    
+            {% endif %}
+            {% if product.technical_parameters %}
+                {% for key, value in product.technical_parameters.items %}
+                    <h3>{{key}}: {{value}}</h3>
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
+    </div>  
+    
+</div>
+
+
+
+{% endblock %}
