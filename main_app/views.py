@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
 
-from main_app.models import Product, Category
+from main_app.models import Product, Category, Manufacture
 
 
 def home(request):
@@ -23,27 +23,52 @@ def categories_list(request):
     return render(request, 'categories_list.html', context)
 
 
-def products_list(request, category_name):
-    p = Paginator(Product.objects.filter(category__name=category_name).order_by('id'), 1)
+def manufactures_list(request):
+    p = Paginator(Manufacture.objects.all().order_by('id'), 6)
     page = request.GET.get('page')
-    products = p.get_page(page)
+    manufactures = p.get_page(page)
+
+    context = {
+        'manufactures': manufactures,
+    }
+    return render(request, 'manufactures_list.html', context)
+
+
+def products_list(request, filter_by_name):
+
+    try:
+        manufacture = Manufacture.objects.get(name=filter_by_name)
+        p = Paginator(Product.objects.filter(manufacture__name=filter_by_name).order_by('id'), 1)
+        page = request.GET.get('page')
+        products = p.get_page(page)
+        category = None
+    except:
+        category = Category.objects.get(name=filter_by_name)
+        p = Paginator(Product.objects.filter(category__name=filter_by_name).order_by('id'), 1)
+        page = request.GET.get('page')
+        products = p.get_page(page)
+        manufacture = None
+
+
 
     context = {
         'products': products,
         'range': range(9),
-        'category': Category.objects.get(name=category_name),
+        'category': category,
+        'manufacture': manufacture,
+
     }
     return render(request, 'product_list.html', context)
 
 
 def product_view(request, category_name, product_name):
-    product = Product.objects.get(name = product_name)
-    category = Category.objects.get(name = category_name)
+    product = Product.objects.get(name=product_name)
+    category = Category.objects.get(name=category_name)
 
-    return render(request, 'product_view.html', 
+    return render(request, 'product_view.html',
                   context={
-        'category': category,
-        'product': product,
+                      'category': category,
+                      'product': product,
                   })
 
 
