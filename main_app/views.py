@@ -49,8 +49,6 @@ def products_list(request, filter_by_name):
         products = p.get_page(page)
         manufacture = None
 
-
-
     context = {
         'products': products,
         'range': range(9),
@@ -64,6 +62,7 @@ def products_list(request, filter_by_name):
 def product_view(request, category_name, product_name):
     product = Product.objects.get(name=product_name)
     category = Category.objects.get(name=category_name)
+    # manufacture = Manufacture.objects.get(name=category_name)
 
     return render(request, 'product_view.html',
                   context={

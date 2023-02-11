@@ -3,11 +3,9 @@
 
 
 {% block page_content %}
-<div class="url-tree">
-    <a href="{% url 'home' %}">Начало</a> /
-    <a href="{% url 'categories-list' %}">Категории</a> /
-    <a href="{% url 'products-list' category.name %}">{{ category.name }}</a>/
-    <a href="{% url 'product-view' category.name product.name %}">{{ product.name }}</a>
+<div class="tags">
+    <a href="{% url 'products-list' category.name %}">{{ category.name }}</a>
+    <a href="{% url 'products-list-by-manufacture' product.manufacture.name  %}">{{ product.manufacture.name }}</a>
 </div>
 
 

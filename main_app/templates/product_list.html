@@ -8,12 +8,12 @@
 
 
     {% if manufacture %}
-      <a href="{% url 'categories-list' %}">Производители</a> /
-      <a href="{% url 'products-list' manufacture.id %}">{{ manufacture.name }}</a>
+      <a href="{% url 'manufactures-list' %}">Производители</a> /
+      <a href="{% url 'products-list' manufacture.name %}">{{ manufacture.name }}</a>
 
     {% elif category %}
       <a href="{% url 'categories-list' %}">Категории</a> /
-      <a href="{% url 'products-list' category.id %}">{{ category.name }}</a>
+      <a href="{% url 'products-list' category.name %}">{{ category.name }}</a>
 
     {% endif %}
 
