@@ -14,7 +14,7 @@
 
       {% for obj in objects %}
 
-        <a href="{% url 'products-list-by-manufacture' obj.name %}">
+        <a href="{% url ''|add:object_url obj.id %}">
           <div class="product">
             <img src="{{ obj.img.url }}" alt="No image">
             <div class="product-info-bar">

@@ -81,8 +81,22 @@ def campaign_list(request):
     context = {
         'objects': objects,
         'url_tree': url_tree,
+        'object_url': 'campaign_view',
     }
-    return render(request, 'list_template.html', context)
+    return render(request, 'objects_list.html', context)
+
+
+def campaign_view(request, pk):
+    object = Campaign.objects.get(id=pk)
+    url_tree = {'home': 'Начало',
+                'campaign_list': 'Промоции',
+                }
+    context = {
+        'object': object,
+        'url_tree': url_tree,
+        'object_url': 'campaign_view',
+    }
+    return render(request, 'object_view.html', context)
 
 
 def search(request):

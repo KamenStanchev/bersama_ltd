@@ -15,6 +15,7 @@ urlpatterns = [
          views.product_view, name='product-view-by-manufacture'),
 
     path('campaign/', views.campaign_list, name='campaign_list'),
+    path('campaign/<str:pk>/', views.campaign_view, name='campaign_view'),
 
     path('search/', views.search, name='search'),
     

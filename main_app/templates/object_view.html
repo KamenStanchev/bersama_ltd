@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block page_content %}
+<div class="url-tree">
+    {% for key, value in url_tree.items %}
+      <a href="{% url ''|add:key %}">{{ value }}</a> /
+    {% endfor %}
+
+{#    <a href="{% url ''|add:object_url  {{ object.id }} %}">KUR</a> /#}
+</div>
+
+
+<div class="template-holder">
+    <div class="product-container">
+        <img src='{{object.img.url}}'>
+        <div>
+            <h2>{{ object.name }}</h2>
+            {% if object.manufacturer %}
+                <h3>{{object.manufacturer}}</h3>
+            {% endif %}
+            {% if object.model %}
+                <h3>{{object.model}}</h3>
+            {% endif %}
+            {% if object.description %}
+                <h3>{{object.description}}</h3>
+            {% endif %}
+            {% if object.technical_parameters %}
+                {% for key, value in object.technical_parameters.items %}
+                    <h3>{{key}}: {{value}}</h3>
+                {% endfor %}
+
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+
+
+{% endblock %}
