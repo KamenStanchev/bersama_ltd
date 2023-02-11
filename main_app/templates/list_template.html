@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block page_content %}
+
+  <div class="url-tree">
+    {% for key, value in url_tree.items %}
+      <a href="{% url ''|add:key %}">{{ value }}</a> /
+    {% endfor %}
+  </div>
+  <div class="template-holder">
+    <div class="products-container">
+
+      {% for obj in objects %}
+
+        <a href="{% url 'products-list-by-manufacture' obj.name %}">
+          <div class="product">
+            <img src="{{ obj.img.url }}" alt="No image">
+            <div class="product-info-bar">
+              <p>{{ obj.name }}</p>
+            </div>
+            <div class="product-info-bar description">
+              <p>{{ obj.description }}</p>
+            </div>
+          </div>
+        </a>
+
+      {% endfor %}
+
+    </div>
+
+      {% if objects.has_previous or objects.has_next %}
+
+        <div class="paginator">
+          {% if objects.has_previous %}
+            <a href="?page=1">&#10096;&#10096;</a>
+            <a href="?page={{ objects.previous_page_number }}">&#10096;</a>
+          {% endif %}
+          <span>Page {{ objects.number }} of {{ objects.paginator.num_pages }}</span>
+          {% if objects.has_next %}
+            <a href="?page={{ objects.next_page_number }}">&#10097;</a>
+            <a href="?page={{ objects.paginator.num_pages }}">&#10097;&#10097;</a>
+          {% endif %}
+        </div>
+
+      {% endif %}
+
+  </div>
+{% endblock %}

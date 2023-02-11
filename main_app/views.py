@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render
 
-from main_app.models import Product, Category, Manufacture
+from main_app.models import Product, Category, Manufacture, Campaign
 
 
 def home(request):
@@ -69,6 +69,20 @@ def product_view(request, category_name, product_name):
                       'category': category,
                       'product': product,
                   })
+
+
+def campaign_list(request):
+    p = Paginator(Campaign.objects.all().order_by('id'), 2)
+    page = request.GET.get('page')
+    objects = p.get_page(page)
+
+    url_tree = {'home': 'Начало', 'campaign_list': 'Промоции'}
+
+    context = {
+        'objects': objects,
+        'url_tree': url_tree,
+    }
+    return render(request, 'list_template.html', context)
 
 
 def search(request):

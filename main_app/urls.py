@@ -14,6 +14,8 @@ urlpatterns = [
     path('manufactures/<str:filter_by_name>/<str:product_name>/',
          views.product_view, name='product-view-by-manufacture'),
 
+    path('campaign/', views.campaign_list, name='campaign_list'),
+
     path('search/', views.search, name='search'),
     
 ]
