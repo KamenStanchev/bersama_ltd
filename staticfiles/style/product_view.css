@@ -1,0 +1,28 @@
+.product-container{
+    padding: 40px;
+    display: flex;
+}
+
+.product-container img{
+    width: 700px;
+}
+
+.tags{
+    display: flex;
+    gap: 30px;
+    margin: 20px 0 20px 40px;
+}
+
+.tags a{
+    text-decoration: none;
+    border: var(--main-grey-color) 2px solid;
+    color: var(--main-grey-color);
+    padding: 5px 10px;
+    border-radius: 23px;
+    background-color: hsl(0, 14%, 93%);
+}
+
+.tags a:hover{
+    box-shadow: #4e4e4e 4px 4px 5px;
+    border: var(--main-grey-color) 1px solid;
+}
