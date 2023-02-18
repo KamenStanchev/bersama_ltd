@@ -16,6 +16,8 @@ DEBUG = os.getenv('DEBUG', None) == 'True'
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['https://bersama.up.railway.app']
+
 
 # Application definition
 
