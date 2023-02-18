@@ -216,20 +216,11 @@ input:focus{
 .url-tree a{
   color: rgb(213, 24, 24);
   font-size: 18px;
-
 }
-
-
-@media screen and (max-width: 600px) {
-  .nav-bar {display: none;}
-  #hamburger-menu {display: flex;}
-  .company-logo {font-size: 30px;}
-  .company-links{display: none;}
-} 
-
 
 @media screen and (max-width: 1100px) {
   #search-input { visibility: hidden;}
   #search-form {border: none;}
   #search-form button {border: #adacac 3px solid; border-radius: 21px}
+  #dropdown-menu {visibility: visible;}
 }
