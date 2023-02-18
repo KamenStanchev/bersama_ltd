@@ -220,7 +220,7 @@ input:focus{
 }
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .nav-bar {display: none;}
   #hamburger-menu {display: flex;}
   .company-logo {font-size: 30px;}
