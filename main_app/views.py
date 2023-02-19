@@ -103,7 +103,7 @@ def search(request):
     if request.method == 'POST':
         searched = request.POST['searched']
 
-        p = Paginator(Product.objects.filter(name__contains=searched).order_by('id'), 1)
+        p = Paginator(Product.objects.filter(name__icontains=searched).order_by('id'), 1)
         page = request.GET.get('page')
         products = p.get_page(page)
 
