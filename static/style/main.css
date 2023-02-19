@@ -1,3 +1,4 @@
+
 :root{
   --main-red-color: rgb(213, 24, 24);
   --main-grey-color: rgb(132, 131, 131);
@@ -219,12 +220,14 @@ input:focus{
 
 }
 
-
+/*Adapt to mobile devices
+hide nav-bar & company-links and show hamburger menu when width is under 900px*/
 @media screen and (max-width: 900px) {
   .nav-bar {display: none;}
   #hamburger-menu {display: flex;}
   .company-logo {font-size: 30px;}
   .company-links{display: none;}
+  nav{height: 80px;}
 } 
 
 

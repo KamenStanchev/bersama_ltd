@@ -1,14 +1,19 @@
+
 window.onscroll = function () {
     scrollFunction()
     hideDropMenuWhenIsHamburgerMenu()
 };
 
+
+//modify nav when scrolling
 function scrollFunction() {
-    if (document.documentElement.scrollTop >= 80) {
+    if (document.documentElement.scrollTop >= 80
+            && window.screen.width > 900) {
         document.getElementsByTagName("nav")[0].style.height = "90px";
         document.getElementsByClassName("nav-bar")[0].style.display = "none";
         document.getElementById("hamburger-menu").style.display = "flex";
-    } else if (document.documentElement.scrollTop <= 10){
+    } else if (document.documentElement.scrollTop <= 10
+                && window.screen.width > 900){
         document.getElementsByTagName("nav")[0].style.height = "134px";
         document.getElementsByClassName("nav-bar")[0].style.display = "flex";
         document.getElementById("hamburger-menu").style.display = "none";
