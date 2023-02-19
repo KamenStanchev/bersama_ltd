@@ -17,6 +17,7 @@
   padding: 20px;
   background-color: white;
   min-width: 250px;
+  max-width: 400px;
   box-shadow: 0px 0px 15px black;
 }
 
@@ -28,8 +29,16 @@
   font-weight: 800;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 800px) {
   .contact-page {
     flex-direction: column;
   }
 }
+
+@media only screen and (max-width: 700px) {
+  .google-map{
+    min-width: 250px;
+    width: 90%;
+  }
+}
+
